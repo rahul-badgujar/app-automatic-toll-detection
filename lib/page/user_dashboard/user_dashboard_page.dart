@@ -1,10 +1,12 @@
 import 'package:automatic_toll_app/model/driver_user.dart';
+import 'package:automatic_toll_app/model/toll_transaction.dart';
 import 'package:automatic_toll_app/widget/default_button.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
 import '../../size_config.dart';
 import 'component/fund_details_widget.dart';
+import 'component/toll_transactions_list_widget.dart';
 
 class UserDashboardPage extends StatelessWidget {
   const UserDashboardPage({Key? key, required this.driverUser})
@@ -53,6 +55,9 @@ class UserDashboardPage extends StatelessWidget {
                 SizedBox(height: SizeConfig.screenHeight * 0.02),
                 FundDetailsWidget(driverUser: driverUser),
                 SizedBox(height: getProportionateScreenHeight(20)),
+                TollTransactionsListWidget(
+                  tollTransactions: sampleTollTransactions,
+                )
               ],
             ),
           ),
