@@ -1,4 +1,4 @@
-import 'package:automatic_toll_app/page/sign_up/sign_up_screen.dart';
+import 'package:automatic_toll_app/page/sign_up/sign_up_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
@@ -63,10 +63,11 @@ class _LoginFormState extends State<LoginForm> {
         GestureDetector(
           onTap: () {
             Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const SignUpPage(),
-                ));
+              context,
+              MaterialPageRoute(
+                builder: (context) => const SignUpPage(),
+              ),
+            );
           },
           child: const Text(
             "Create Account",

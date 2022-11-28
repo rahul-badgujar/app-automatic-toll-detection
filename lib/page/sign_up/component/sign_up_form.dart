@@ -1,3 +1,4 @@
+import 'package:automatic_toll_app/page/personal_info/personal_info_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
@@ -150,5 +151,16 @@ class _SignUpFormState extends State<SignUpForm> {
     );
   }
 
-  Future<void> signUpButtonCallback() async {}
+  Future<void> signUpButtonCallback() async {
+    final formState = _formKey.currentState;
+    if (formState != null && formState.validate()) {
+      // todo: add/move account creation logic here
+    }
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const PersonalInfoPage(),
+      ),
+    );
+  }
 }

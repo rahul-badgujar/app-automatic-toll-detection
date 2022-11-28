@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'size_config.dart';
 
+const bool underTesting = true;
 const String appName = "Automatic Toll App";
 
 enum AuthRole { admin, user }
