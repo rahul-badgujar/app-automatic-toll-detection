@@ -1,17 +1,18 @@
-import 'package:automatic_toll_app/model/driver_user.dart';
+import 'package:automatic_toll_app/model/admin_toll_transaction.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
+import '../../model/admin_user.dart';
 import '../../model/driver_toll_transaction.dart';
 import '../../size_config.dart';
-import 'component/fund_details_widget.dart';
+import 'component/toll_collected_details_widget.dart';
 import 'component/toll_transactions_list_widget.dart';
 
-class UserDashboardPage extends StatelessWidget {
-  const UserDashboardPage({Key? key, required this.driverUser})
+class AdminDashboardPage extends StatelessWidget {
+  const AdminDashboardPage({Key? key, required this.adminUser})
       : super(key: key);
 
-  final DriverUser driverUser;
+  final AdminUser adminUser;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class UserDashboardPage extends StatelessWidget {
   AppBar buildAppBar() {
     return AppBar(
       title: Text(
-        driverUser.fullname,
+        adminUser.fullname,
         style: TextStyle(
           color: Colors.white,
           fontSize: getProportionateScreenWidth(22),
@@ -52,10 +53,10 @@ class UserDashboardPage extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: SizeConfig.screenHeight * 0.02),
-                FundDetailsWidget(driverUser: driverUser),
+                TollCollectedDetailsWidget(adminUser: adminUser),
                 SizedBox(height: getProportionateScreenHeight(20)),
                 TollTransactionsListWidget(
-                  tollTransactions: sampleDriverTollTransactions,
+                  tollTransactions: sampleAdminTollTransactions,
                 )
               ],
             ),

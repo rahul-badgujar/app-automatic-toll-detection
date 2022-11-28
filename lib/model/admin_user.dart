@@ -1,5 +1,9 @@
 import 'user.dart';
 
 class AdminUser extends User {
-  AdminUser({required super.fullname});
+  final double totalTollCollected;
+  AdminUser({
+    required super.fullname,
+    required this.totalTollCollected,
+  });
 }

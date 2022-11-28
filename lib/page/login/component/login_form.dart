@@ -1,4 +1,6 @@
+import 'package:automatic_toll_app/model/admin_user.dart';
 import 'package:automatic_toll_app/model/driver_user.dart';
+import 'package:automatic_toll_app/page/admin_dashboard/admin_dashboard_page.dart';
 import 'package:automatic_toll_app/page/sign_up/sign_up_page.dart';
 import 'package:automatic_toll_app/page/user_dashboard/user_dashboard_page.dart';
 import 'package:flutter/material.dart';
@@ -159,7 +161,16 @@ class _LoginFormState extends State<LoginForm> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => UserDashboardPage(driverUser: sampleDriverUser),
+        builder: (context) => isAdminLoginChangeNotifier.value
+            ? AdminDashboardPage(
+                adminUser: AdminUser(
+                  fullname: 'System Admin',
+                  totalTollCollected: 24512.0,
+                ),
+              )
+            : UserDashboardPage(
+                driverUser: sampleDriverUser,
+              ),
       ),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
-import '../../../model/driver_toll_transaction.dart';
+import '../../../model/admin_toll_transaction.dart';
 import '../../../size_config.dart';
 
 class TollTransactionsListWidget extends StatelessWidget {
@@ -10,7 +10,7 @@ class TollTransactionsListWidget extends StatelessWidget {
     this.tollTransactions = const [],
   }) : super(key: key);
 
-  final List<DriverTollTransaction> tollTransactions;
+  final List<AdminTollTransaction> tollTransactions;
 
   @override
   Widget build(BuildContext context) {
@@ -36,13 +36,23 @@ class TollTransactionsListWidget extends StatelessWidget {
                   ),
                   headingRowColor:
                       MaterialStateProperty.all(Colors.black.withOpacity(0.03)),
-                  columns: ["Toll Name", "Amount Deducted", "Timestamp"]
-                      .map((e) => DataColumn(label: Text(e)))
-                      .toList(),
+                  columns: [
+                    "Toll Name",
+                    "Vehicle Type",
+                    "Licence Plate",
+                    "Amount Deducted",
+                    "Timestamp"
+                  ].map((e) => DataColumn(label: Text(e))).toList(),
                   rows: tollTransactions.map((tollTransaction) {
                     return DataRow(cells: [
                       DataCell(
                         Text(tollTransaction.tollName),
+                      ),
+                      DataCell(
+                        Text(tollTransaction.vehicleType.name.toUpperCase()),
+                      ),
+                      DataCell(
+                        Text(tollTransaction.vehicleLicencePlate),
                       ),
                       DataCell(
                         Text("₹ ${tollTransaction.amountDeducted}"),
