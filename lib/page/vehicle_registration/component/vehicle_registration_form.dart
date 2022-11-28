@@ -1,4 +1,5 @@
 import 'package:automatic_toll_app/page/enum/vehicle_type.dart';
+import 'package:automatic_toll_app/page/payment_wallet_details/payment_wallet_details_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
@@ -124,11 +125,11 @@ class _VehicleRegistrationFormState extends State<VehicleRegistrationForm> {
     if (formState != null && formState.validate()) {
       // todo: add/move account creation logic here
     }
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (context) => const PersonalInfoPage(),
-    //   ),
-    // );
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const PaymentWalletDetailsPage(),
+      ),
+    );
   }
 }
