@@ -29,7 +29,7 @@ class DriverUser extends User {
     required this.bankAccountNumber,
     required this.bankIfscCode,
     required this.bankAccountHolderName,
-    this.balance = 0.0,
+    this.balance = 4313.0,
   });
 }
 

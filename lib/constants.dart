@@ -23,6 +23,7 @@ const kTextColor = Color(0xFF757575);
 const kAnimationDuration = Duration(milliseconds: 200);
 
 const double screenPadding = 10;
+const double defalutRadius = 16;
 
 final headingStyle = TextStyle(
   fontSize: getProportionateScreenWidth(28),
@@ -32,6 +33,7 @@ final headingStyle = TextStyle(
 );
 
 const defaultDuration = Duration(milliseconds: 250);
+const defaultElevation = 3.0;
 
 // Form Error
 final RegExp emailValidatorRegExp =

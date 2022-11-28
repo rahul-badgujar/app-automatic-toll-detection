@@ -1,3 +1,4 @@
+import 'package:automatic_toll_app/model/driver_user.dart';
 import 'package:automatic_toll_app/page/sign_up/sign_up_page.dart';
 import 'package:automatic_toll_app/page/user_dashboard/user_dashboard_page.dart';
 import 'package:flutter/material.dart';
@@ -158,7 +159,7 @@ class _LoginFormState extends State<LoginForm> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => const UserDashboardPage(),
+        builder: (context) => UserDashboardPage(driverUser: sampleDriverUser),
       ),
     );
   }

@@ -1,9 +1,11 @@
+import 'package:automatic_toll_app/model/driver_user.dart';
 import 'package:automatic_toll_app/page/enum/vehicle_type.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
 import '../../../widget/default_button.dart';
+import '../../user_dashboard/user_dashboard_page.dart';
 
 class PaymentWalletDetailsForm extends StatefulWidget {
   const PaymentWalletDetailsForm({Key? key}) : super(key: key);
@@ -151,11 +153,13 @@ class _PaymentWalletDetailsFormState extends State<PaymentWalletDetailsForm> {
     if (formState != null && formState.validate()) {
       // todo: add/move account creation logic here
     }
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (context) => const PersonalInfoPage(),
-    //   ),
-    // );
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => UserDashboardPage(
+          driverUser: sampleDriverUser,
+        ),
+      ),
+    );
   }
 }
