@@ -1,4 +1,5 @@
 import 'package:automatic_toll_app/page/sign_up/sign_up_page.dart';
+import 'package:automatic_toll_app/page/user_dashboard/user_dashboard_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
@@ -154,5 +155,11 @@ class _LoginFormState extends State<LoginForm> {
     if (formState != null && formState.validate()) {
       _formkey.currentState!.save();
     }
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const UserDashboardPage(),
+      ),
+    );
   }
 }
