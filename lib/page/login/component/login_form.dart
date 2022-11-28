@@ -1,3 +1,4 @@
+import 'package:automatic_toll_app/page/sign_up/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
@@ -48,8 +49,34 @@ class _LoginFormState extends State<LoginForm> {
             text: "Sign in",
             press: signInButtonCallback,
           ),
+          SizedBox(height: getProportionateScreenHeight(30)),
+          buildCreateAccountWidget(context),
         ],
       ),
+    );
+  }
+
+  Widget buildCreateAccountWidget(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SignUpPage(),
+                ));
+          },
+          child: const Text(
+            "Create Account",
+            style: TextStyle(
+              decoration: TextDecoration.underline,
+              color: kPrimaryColor,
+            ),
+          ),
+        )
+      ],
     );
   }
 

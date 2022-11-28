@@ -1,8 +1,8 @@
-import 'package:automatic_toll_app/page/login/widget/login_form.dart';
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
-import '../size_config.dart';
+import '../../constants.dart';
+import '../../size_config.dart';
+import 'component/login_form.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
