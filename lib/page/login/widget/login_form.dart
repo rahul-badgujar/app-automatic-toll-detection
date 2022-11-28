@@ -15,9 +15,11 @@ class LoginForm extends StatefulWidget {
 class _LoginFormState extends State<LoginForm> {
   final _formkey = GlobalKey<FormState>();
 
-  final TextEditingController emailFieldController = TextEditingController();
+  final emailFieldController = TextEditingController();
 
-  final TextEditingController passwordFieldController = TextEditingController();
+  final passwordFieldController = TextEditingController();
+
+  final isAdminLoginChangeNotifier = ValueNotifier<bool>(false);
 
   @override
   void dispose() {
@@ -40,12 +42,34 @@ class _LoginFormState extends State<LoginForm> {
           SizedBox(height: getProportionateScreenHeight(30)),
           buildPasswordFormField(),
           SizedBox(height: getProportionateScreenHeight(30)),
+          buildRoleField(),
+          SizedBox(height: getProportionateScreenHeight(30)),
           DefaultButton(
             text: "Sign in",
             press: signInButtonCallback,
           ),
         ],
       ),
+    );
+  }
+
+  Widget buildRoleField() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        ValueListenableBuilder(
+          valueListenable: isAdminLoginChangeNotifier,
+          builder: (context, isAdminLogin, _) {
+            return Checkbox(
+              value: isAdminLoginChangeNotifier.value,
+              onChanged: (event) {
+                isAdminLoginChangeNotifier.value = event ?? false;
+              },
+            );
+          },
+        ),
+        const Text("I am Admin"),
+      ],
     );
   }
 

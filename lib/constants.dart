@@ -4,6 +4,8 @@ import 'size_config.dart';
 
 const String appName = "Automatic Toll App";
 
+enum AuthRole { admin, user }
+
 const kPrimaryColor = Color.fromARGB(255, 102, 102, 255);
 const kPrimaryLightColor = Color(0xFFFFECDF);
 const kPrimaryGradientColor = LinearGradient(
