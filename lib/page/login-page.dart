@@ -45,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 SizedBox(height: SizeConfig.screenHeight * 0.04),
                 Text(
-                  "Welcome Back",
+                  appName,
                   style: headingStyle,
                 ),
                 const Text(
