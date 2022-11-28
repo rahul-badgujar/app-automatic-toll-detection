@@ -1,11 +1,9 @@
-import 'package:automatic_toll_app/model/driver_user.dart';
-import 'package:automatic_toll_app/page/enum/vehicle_type.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
 import '../../../widget/default_button.dart';
-import '../../user_dashboard/user_dashboard_page.dart';
+import '../../login/login-page.dart';
 
 class PaymentWalletDetailsForm extends StatefulWidget {
   const PaymentWalletDetailsForm({Key? key}) : super(key: key);
@@ -57,8 +55,8 @@ class _PaymentWalletDetailsFormState extends State<PaymentWalletDetailsForm> {
             buildAccountHolderNameFormField(),
             SizedBox(height: getProportionateScreenHeight(30)),
             DefaultButton(
-              text: "Save and Continue",
-              press: saveAndContinueButtonCallback,
+              text: "Comple Registration",
+              press: completeRegistrationButtonCallback,
             ),
           ],
         ),
@@ -148,17 +146,16 @@ class _PaymentWalletDetailsFormState extends State<PaymentWalletDetailsForm> {
     );
   }
 
-  Future<void> saveAndContinueButtonCallback() async {
+  Future<void> completeRegistrationButtonCallback() async {
     final formState = _formKey.currentState;
     if (formState != null && formState.validate()) {
       // todo: add/move account creation logic here
     }
+
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => UserDashboardPage(
-          driverUser: sampleDriverUser,
-        ),
+        builder: (context) => const LoginPage(),
       ),
     );
   }
