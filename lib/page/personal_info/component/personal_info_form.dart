@@ -1,3 +1,4 @@
+import 'package:automatic_toll_app/page/vehicle_registration/vehicle_registration_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
@@ -47,7 +48,7 @@ class _PersonalInfoFormState extends State<PersonalInfoForm> {
             SizedBox(height: getProportionateScreenHeight(30)),
             DefaultButton(
               text: "Save and Continue",
-              press: signUpButtonCallback,
+              press: saveAndContinueButtonCallback,
             ),
           ],
         ),
@@ -138,16 +139,16 @@ class _PersonalInfoFormState extends State<PersonalInfoForm> {
     );
   }
 
-  Future<void> signUpButtonCallback() async {
+  Future<void> saveAndContinueButtonCallback() async {
     final formState = _formKey.currentState;
     if (formState != null && formState.validate()) {
       // todo: add/move account creation logic here
     }
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (context) => const PersonalInfoPage(),
-    //   ),
-    // );
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const VehicleRegistrationPage(),
+      ),
+    );
   }
 }
