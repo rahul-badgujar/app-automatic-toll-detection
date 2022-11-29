@@ -1,9 +1,10 @@
+import 'package:automatic_toll_app/page/initial_fund/initial_fund_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
 import '../../../widget/default_button.dart';
-import '../../login/login-page.dart';
+import '../../login/login_page.dart';
 
 class PaymentWalletDetailsForm extends StatefulWidget {
   const PaymentWalletDetailsForm({Key? key}) : super(key: key);
@@ -55,8 +56,8 @@ class _PaymentWalletDetailsFormState extends State<PaymentWalletDetailsForm> {
             buildAccountHolderNameFormField(),
             SizedBox(height: getProportionateScreenHeight(30)),
             DefaultButton(
-              text: "Comple Registration",
-              press: completeRegistrationButtonCallback,
+              text: "Create Wallet",
+              press: createWalletButtonCallback,
             ),
           ],
         ),
@@ -146,7 +147,7 @@ class _PaymentWalletDetailsFormState extends State<PaymentWalletDetailsForm> {
     );
   }
 
-  Future<void> completeRegistrationButtonCallback() async {
+  Future<void> createWalletButtonCallback() async {
     final formState = _formKey.currentState;
     if (formState != null && formState.validate()) {
       // todo: add/move account creation logic here
@@ -155,7 +156,7 @@ class _PaymentWalletDetailsFormState extends State<PaymentWalletDetailsForm> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => const LoginPage(),
+        builder: (context) => const InitialFundPage(),
       ),
     );
   }

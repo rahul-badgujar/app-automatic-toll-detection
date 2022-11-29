@@ -4,12 +4,16 @@ import '../../../constants.dart';
 import '../../../size_config.dart';
 
 class CheckoutCard extends StatefulWidget {
-  final Function(int) onCheckoutPressed;
+  final Function(double) onCheckoutPressed;
+  final double? minimumAmount;
+  final String? label;
 
-  const CheckoutCard({
-    Key? key,
-    required this.onCheckoutPressed,
-  }) : super(key: key);
+  const CheckoutCard(
+      {Key? key,
+      required this.onCheckoutPressed,
+      this.minimumAmount,
+      this.label})
+      : super(key: key);
 
   @override
   State<CheckoutCard> createState() => _CheckoutCardState();
@@ -61,6 +65,13 @@ class _CheckoutCardState extends State<CheckoutCard> {
                 key: _formkey,
                 child: Column(
                   children: [
+                    if (widget.label != null)
+                      Column(
+                        children: [
+                          buildLabel(widget.label!),
+                          SizedBox(height: getProportionateScreenHeight(30)),
+                        ],
+                      ),
                     buildAmountFormField(),
                     SizedBox(height: getProportionateScreenHeight(30)),
                     buildOtpFormField(),
@@ -77,6 +88,10 @@ class _CheckoutCardState extends State<CheckoutCard> {
     );
   }
 
+  Widget buildLabel(String label) {
+    return Text(label);
+  }
+
   Widget buildAmountFormField() {
     return TextFormField(
       controller: amountFieldController,
@@ -90,9 +105,12 @@ class _CheckoutCardState extends State<CheckoutCard> {
         if (value == null || value.isEmpty) {
           return "Amount cannot be empty";
         }
-        final amount = int.tryParse(value) ?? 0;
+        final amount = double.tryParse(value) ?? 0;
         if (amount == 0) {
           return "Amount cannot be zero";
+        }
+        if (widget.minimumAmount != null && amount < widget.minimumAmount!) {
+          return "Minimum required amount is ${widget.minimumAmount}";
         }
         return null;
       },
@@ -148,7 +166,8 @@ class _CheckoutCardState extends State<CheckoutCard> {
   void onCheckoutClicked() {
     final formState = _formkey.currentState;
     if (formState != null && formState.validate()) {
-      final amountToAdd = int.tryParse(amountFieldController.value.text) ?? 0;
+      final amountToAdd =
+          double.tryParse(amountFieldController.value.text) ?? 0;
       widget.onCheckoutPressed(amountToAdd);
     }
   }

@@ -1,5 +1,5 @@
 import 'package:automatic_toll_app/model/admin_toll_transaction.dart';
-import 'package:automatic_toll_app/page/login/login-page.dart';
+import 'package:automatic_toll_app/page/login/login_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
