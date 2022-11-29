@@ -25,7 +25,6 @@ class _InitialFundPageState extends State<InitialFundPage> {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(),
