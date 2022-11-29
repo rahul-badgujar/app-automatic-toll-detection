@@ -3,14 +3,22 @@ import 'package:flutter/material.dart';
 import '../../../constants.dart';
 import '../../../model/driver_user.dart';
 import '../../../size_config.dart';
+import 'checkout_card.dart';
 
-class FundDetailsWidget extends StatelessWidget {
-  const FundDetailsWidget({
+class FundDetailsWidget extends StatefulWidget {
+  FundDetailsWidget({
     Key? key,
     required this.driverUser,
   }) : super(key: key);
 
   final DriverUser driverUser;
+
+  @override
+  State<FundDetailsWidget> createState() => _FundDetailsWidgetState();
+}
+
+class _FundDetailsWidgetState extends State<FundDetailsWidget> {
+  late final PersistentBottomSheetController bottomSheetHandler;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +45,7 @@ class FundDetailsWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "₹ ${driverUser.balance}",
+                  "₹ ${widget.driverUser.balance}",
                   style: TextStyle(
                     color: Colors.black87,
                     fontSize: getProportionateScreenWidth(30),
@@ -48,7 +56,19 @@ class FundDetailsWidget extends StatelessWidget {
                   width: getProportionateScreenWidth(16),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    bottomSheetHandler = Scaffold.of(context).showBottomSheet(
+                      (context) {
+                        return CheckoutCard(
+                          onCheckoutPressed: (amountAdded) {
+                            sampleDriverUser.balance += amountAdded;
+                            bottomSheetHandler.close();
+                            setState(() {});
+                          },
+                        );
+                      },
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     elevation: 0,
                     shape: const RoundedRectangleBorder(

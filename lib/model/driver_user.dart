@@ -3,7 +3,7 @@ import 'package:automatic_toll_app/page/enum/vehicle_type.dart';
 import 'user.dart';
 
 class DriverUser extends User {
-  final double balance;
+  double balance;
   final String phoneNumber;
   final String address;
   final String aadharNumber;
