@@ -72,11 +72,12 @@ class _InitialFundPageState extends State<InitialFundPage> {
                           onCheckoutPressed: (amountAdded) {
                             sampleDriverUser.balance = amountAdded;
                             bottomSheetHandler.close();
-                            Navigator.pushReplacement(
+                            Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => const LoginPage(),
                               ),
+                              (_) => false,
                             );
                           },
                         );
