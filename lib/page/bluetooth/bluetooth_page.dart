@@ -49,6 +49,21 @@ class _BluetoothPageState extends State<BluetoothPage> {
               softWrap: true,
             ),
             SizedBox(height: SizeConfig.screenHeight * 0.02),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const Text("Turn on Bluetooth"),
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    await BluetoothServicesWrapper.instance.startScan();
+                  },
+                  child: const Text("Refresh"),
+                ),
+              ],
+            ),
             Expanded(
               child: buildAvailableDevicesList(),
             )
