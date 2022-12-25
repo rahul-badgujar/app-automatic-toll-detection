@@ -1,4 +1,5 @@
 import 'package:automatic_toll_app/model/driver_user.dart';
+import 'package:automatic_toll_app/page/bluetooth/bluetooth_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
@@ -24,6 +25,17 @@ class UserDashboardPage extends StatelessWidget {
       drawer: Drawer(
         child: ListView(
           children: [
+            ListTile(
+              title: const Text("Bluetooth"),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const BluetoothPage(),
+                  ),
+                );
+              },
+            ),
             ListTile(
               title: const Text(
                 "Logout",
